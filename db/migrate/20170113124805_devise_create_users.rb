@@ -1,6 +1,6 @@
-class DeviseCreateUsername:s < ActiveRecord::Migration[5.0]
+class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   def change
-    create_table :username:s do |t|
+    create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -30,14 +30,13 @@ class DeviseCreateUsername:s < ActiveRecord::Migration[5.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.string :postgres
 
       t.timestamps null: false
     end
 
-    add_index :username:s, :email,                unique: true
-    add_index :username:s, :reset_password_token, unique: true
-    # add_index :username:s, :confirmation_token,   unique: true
-    # add_index :username:s, :unlock_token,         unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    # add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,         unique: true
   end
 end
