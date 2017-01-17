@@ -1,0 +1,124 @@
+@import "bootstrap";
+
+$green: #16A085;
+$grey: #5A6576;
+$other-grey: #E7ECEE;
+$blue: #058CC5;
+$red: #D2527F;
+$light-blue: #3498DB;
+$teal: #009688;
+
+/* Texto */
+.bold {
+	font-weight: bolder;
+}
+/* Colores */
+.white {
+	background: white;
+}
+.white-text {
+	color: white;
+}
+.teal {
+	background: $teal;
+}
+.teal-text {
+	color: $teal;
+}
+.green {
+	background: $green;
+}
+.green-text {
+	color: $green;
+}
+.grey {
+	background: $grey;
+}
+.grey-text {
+	color: $grey;
+}
+.other-grey {
+	background: $other-grey;
+}
+.other-grey-text {
+	color: $other-grey;
+}
+.red {
+	background: $red;
+}
+.red-text {
+	color: $red;
+}
+.blue {
+	background: $blue;
+}
+.blue-text {
+	color: $blue;
+}
+.light-blue {
+	background: $light-blue;
+}
+.light-blue-text {
+	color: $light-blue;
+}
+
+/* Paddings */
+.large-padding {
+	padding: 5px 10px;
+}
+.big-padding {
+	padding: 2em;
+}
+.no-padding {
+	padding: 0;
+}
+.no-margin {
+	margin: 0;
+}
+.top-space {
+	margin-top: 1em;
+}
+.bottom-space {
+	margin-bottom: 1em;
+}
+/* Alineamiento */
+.no-float {
+	float: none !important;
+}
+.in-top {
+	vertical-align: top !important;
+}
+.inline-block {
+	float: none !important;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: -4px;
+}
+.absolute {
+	position: absolute;
+}
+
+/* Tamaños */
+.small {
+	font-size: 12px;
+}
+.normal {
+	font-size: 1.2em;
+}
+.medium {
+	font-size: 1.5em;
+}
+.big {
+	font-size: 3em;
+}
+.bigger {
+	font-size: 4em;
+}
+.ultra-big {
+	font-size: 7em;
+}
+
+
+textarea {
+	min-height: 10rem;
+}
