@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+
+post "/emails/create", as: :create_email
+
   authenticated :user do
-    
 		root 'welcome#index'
 	end
 	unauthenticated :user do
