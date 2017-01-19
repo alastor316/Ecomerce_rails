@@ -6,3 +6,59 @@
 				%strong Ofrece tus productos digitales a tu audiencia
 		.col-md-5.inline-block
 			= image_tag "mono.png"
+.grey.white-text.big-padding.kostic
+
+	.col-md-12.no-float.center-block
+		.absolute{style: "bottom:-4.5em;width:100%;left:0;"}
+			.big.text-center
+				.col-md-3.inline-block
+					.white.grey-text.circle
+						%strong 1
+				.col-md-3.inline-block
+					.white.grey-text.circle
+						%strong 2
+				.col-md-3.inline-block
+					.white.grey-text.circle
+						%strong 3
+
+		%h2.bigger.kostic.text-center
+			%strong Tiendus en 3 pasos
+		%div.text-center.top-space
+			.col-md-3.inline-block.text-left
+				=image_tag "upload-icon.png", class:"col-md-10  inline-block"
+				.top-space
+					%span.medium
+						Sube tus archivos a Tiendus
+					%p.white-text.text-justify.small
+						¡Libro digital, canción, comic, curso
+						o lo que se te ocurra! Si lo puedes
+						meter en un .Zip, lo puedes vender.*
+			.col-md-3.inline-block.text-left
+				=image_tag "youtube-icon.png", class:"col-md-10 inline-block"
+				.top-space
+					%span.medium
+						Cuéntale a tus fans
+					%p.white-text.text-justify.small
+						Comparte el link personalizado de tu
+						producto en tus redes sociales o sitio web
+			.col-md-3.inline-block.text-left
+				=image_tag "money-icon.png", class:"col-md-8 inline-block"
+				.top-space
+					%span.medium
+						Vende y gana dinero
+					%p.white-text.text-justify.small
+						Recive tu dinero en tu cuenta de PayPal
+						y tu cliente su producto en tu email inmediatamente.
+						Así de fácil
+.red.white-text.big-padding.kostic{style:"margin-top:5em;"}
+	.col-md-8.no-float.text-center.center-block
+		=image_tag "media-icons.png"
+		%p.medium.col-md-11.center-block.no-float.top-space
+			%strong
+				Vende tus libros electronicos, tutoriales, canciones,
+				comics, plantillas, fotografías de stock, archivos fuente,
+				¡cualquier producto digital!
+.top-space.big-padding
+	.col-md-11.col-xs-12.center-block.no-float
+		=form_tag("/",method: :post) do
+			=email_field_tag "email",nil,class:"col-xs-12 inline-block text-center landing-form", placeholder: "Escribe aquí tu email"
