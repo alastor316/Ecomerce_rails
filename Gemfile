@@ -34,6 +34,8 @@ gem "haml-rails"
 
 gem 'bootstrap-sass'
 
+gem 'paperclip' 
+
 gem 'bootstrap-material-design'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -49,7 +51,7 @@ group :development, :test do
 
   gem 'shoulda-matchers'
   gem 'rspec-rails'
-  gem "factory_girl_rails" 
+  gem "factory_girl_rails"
 end
 
 group :development do
