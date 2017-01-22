@@ -24,12 +24,19 @@ RSpec.describe ProductsController, type: :controller do
   # Product. As you add validations to Product, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+        {
+            name: "Producto primero",
+            pricing: 1.0,
+            user: FactoryGirl.create(:user)
+        }
+    }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+    let(:invalid_attributes) {
+        {
+            name: "asdf",
+            pricing: 0
+        }
+    }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -53,6 +60,7 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "GET #new" do
+    login_user
     it "assigns a new product as @product" do
       get :new, params: {}, session: valid_session
       expect(assigns(:product)).to be_a_new(Product)
@@ -60,6 +68,7 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "GET #edit" do
+    login_user
     it "assigns the requested product as @product" do
       product = Product.create! valid_attributes
       get :edit, params: {id: product.to_param}, session: valid_session
@@ -68,6 +77,7 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "POST #create" do
+      login_user
     context "with valid params" do
       it "creates a new Product" do
         expect {
@@ -101,16 +111,19 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "PUT #update" do
+    login_user
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          name: "Actualizado"
+        }
       }
 
       it "updates the requested product" do
         product = Product.create! valid_attributes
         put :update, params: {id: product.to_param, product: new_attributes}, session: valid_session
         product.reload
-        skip("Add assertions for updated state")
+        expect(product.name).to eq("Actualizado")
       end
 
       it "assigns the requested product as @product" do
@@ -142,6 +155,7 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+    login_user
     it "destroys the requested product" do
       product = Product.create! valid_attributes
       expect {
