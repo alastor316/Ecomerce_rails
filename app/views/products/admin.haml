@@ -1,0 +1,17 @@
+.col-md-3.col-xs-12.col-sm-3.no-padding.inline-block.in-top.shadow-z-1
+	%nav.medium.text-center
+		.green.white-text.col-md-12
+			Admin General
+.col-md-9.col-xs-12.col-sm-9.inline-block.in-top
+	.card.large-padding
+		.col-md-9.inline-block.col-sm-8.col-xs-12
+			%h1= @product.name
+		.col-md-3.col-sm-4.col-xs-12.inline-block
+			%p.big.no-margin.red-text 10 USD
+		%nav.top-space
+			= link_to product_path(id: @product.id, client: true), class: "other-grey text-center col-md-4 inline-block large-padding col-sm-4 col-xs-4" do
+				Ver como cliente
+			= link_to edit_product_path(@product), class: "other-grey text-center col-md-4 inline-block large-padding col-sm-4 col-xs-4" do
+				Editar Producto
+			= link_to @product, method: :delete, data: { confirm: "¿Estas seguro de eliminar este producto?" },class: "other-grey text-center col-md-4 inline-block large-padding col-sm-4 col-xs-4" do
+				Eliminar Producto

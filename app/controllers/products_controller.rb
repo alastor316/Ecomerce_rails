@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    if user_signed_in? && current_user == @product.user && !params.has_key?(:client)
+      render :admin
+    end
   end
 
   # GET /products/new
@@ -68,6 +71,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :pricing, :description, :user_id)
+      params.require(:product).permit(:name, :pricing, :description, :avatar, :user_id)
     end
 end
