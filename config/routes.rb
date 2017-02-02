@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+
+  resources :attachments, only: [:create,:destroy,:new,:show]
+  resources :products
   devise_for :users
-  resources :attachments, only: [:new,:create,:destroy,:show]
-      resources :products
+
 post "/emails/create", as: :create_email
 
   authenticated :user do

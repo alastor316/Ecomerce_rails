@@ -34,9 +34,17 @@ gem "haml-rails"
 
 gem 'bootstrap-sass'
 
-gem 'paperclip' 
+gem 'paperclip'
 
 gem 'bootstrap-material-design'
+
+#paypal SDK
+
+gem 'paypal-sdk-rest'
+
+#Anotacion de los modelos
+
+gem "annotate"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

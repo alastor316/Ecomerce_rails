@@ -1,0 +1,12 @@
+git init  --> empezar a monitorear con git
+
+git status --> revizar los cambios
+
+git add -A --> agregar todo
+
+git commit -m "mensaje" --> crear commit
+
+
+
+
+yhan324@yahoo.com
