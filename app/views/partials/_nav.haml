@@ -1,0 +1,24 @@
+%header
+	%nav.green
+	%nav.green{:style => "width:99.9%"}
+		%ul.no-list.no-padding.text-center
+			%li.col-md-4.inline-block.tall-padding
+				-if user_signed_in?
+					= link_to root_path, class: "white-text right-space" do
+						%i.mdi-action-shop
+						Mi tienda
+					= link_to "", class: "white-text right-space" do
+						%i.mdi-action-translate
+						Ordenes
+					= link_to "", class: "white-text right-space" do
+						%i.mdi-action-alarm
+						Descuentos
+			%li.col-md-4.inline-block.text-center.tall-padding
+				=image_tag "tiendus.png", height: "25px"
+			%li.col-md-4.inline-block.tall-padding
+				=link_to carrito_path, class: "white-text" do
+					%i.mdi-action-shop-two
+					Mi Carrito
+					(
+					= @shopping_cart.products.count
+					)
