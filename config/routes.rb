@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 post "/emails/create", as: :create_email
 
 get "carrito", to: "shopping_carts#show"
+get "/add/:product_id", as: :add_to_cart,to: "in_shopping_carts#create"  
   authenticated :user do
 		root 'welcome#index'
 	end
