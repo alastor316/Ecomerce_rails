@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202011920) do
+ActiveRecord::Schema.define(version: 20170220170111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,24 +47,26 @@ ActiveRecord::Schema.define(version: 20170202011920) do
     t.string   "email"
     t.string   "ip"
     t.string   "status"
-    t.decimal  "fee",        precision: 6, scale: 2
+    t.decimal  "fee",              precision: 6, scale: 2
     t.string   "paypal_id"
-    t.decimal  "total",      precision: 8, scale: 2
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.decimal  "total",            precision: 8, scale: 2
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "shopping_cart_id"
+    t.index ["shopping_cart_id"], name: "index_my_payments_on_shopping_cart_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "pricing",             precision: 10, scale: 2
+    t.integer  "pricing"
     t.text     "description"
     t.integer  "user_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
@@ -95,5 +97,6 @@ ActiveRecord::Schema.define(version: 20170202011920) do
   add_foreign_key "attachments", "products"
   add_foreign_key "in_shopping_carts", "products"
   add_foreign_key "in_shopping_carts", "shopping_carts"
+  add_foreign_key "my_payments", "shopping_carts"
   add_foreign_key "products", "users"
 end

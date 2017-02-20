@@ -4,7 +4,7 @@
 #
 #  id                  :integer          not null, primary key
 #  name                :string
-#  pricing             :decimal(10, 2)
+#  pricing             :integer
 #  description         :text
 #  user_id             :integer
 #  avatar_file_name    :string
@@ -18,7 +18,7 @@
 FactoryGirl.define do
   factory :product do
     name "MyString"
-    pricing "9.99"
+    pricing 100
     description "MyText"
     association :user, factory: :user
   end
