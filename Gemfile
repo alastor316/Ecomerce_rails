@@ -42,6 +42,9 @@ gem 'bootstrap-material-design'
 
 gem 'paypal-sdk-rest'
 
+#Aasm para crear maquinas de estado
+gem "aasm"
+
 #Anotacion de los modelos
 
 gem "annotate"
