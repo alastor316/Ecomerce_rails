@@ -29,6 +29,12 @@ class ShoppingCart < ApplicationRecord
 
   end
 
+  def items
+    self.products.map do |product|
+      product.paypal_form
+    end
+  end
+
   def total
     products.sum(:pricing)
   end
