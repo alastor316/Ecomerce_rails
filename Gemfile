@@ -45,6 +45,8 @@ gem 'paypal-sdk-rest'
 #Aasm para crear maquinas de estado
 gem "aasm"
 
+#credir card validator
+gem "credit_card_validator"
 #Anotacion de los modelos
 
 gem "annotate"

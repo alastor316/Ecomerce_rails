@@ -27,6 +27,6 @@ class Product < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   def paypal_form
-    {name: name,sku: :item, price: (pricing /  100),currency:"USD",quantity:1}
+    {name: name,sku: :item, price: (pricing / 100),currency:"USD",quantity:1}
   end
 end

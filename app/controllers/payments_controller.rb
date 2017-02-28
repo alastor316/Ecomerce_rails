@@ -1,19 +1,36 @@
 class PaymentsController < ApplicationController
 
-  include PayPal::SDK::REST
-
-  def checkout
+    def checkout
     @my_payment = MyPayment.find_by(paypal_id: params[:paymentId])
     if @my_payment.nil?
       redirect_to "/carrito"
-    else
-    payment = Payment.find(@my_payment.paypal_id)
-    if payment.execute(payer_id: params[:PayerID])
+  else
+    Stores::Paypal.checkout(params[:PayerID],params[:paymentId]) do
       @my_payment.pay!
       redirect_to carrito_path, notice:"Se procesó el pago con PayPal"
-      else
-        redirect_to carrito_path, notice:"Hubo un error al procesar el pago"
-      end
+      return
+    end
+      redirect_to carrito_path, notice:"Hubo un error al procesar el pago"
+    end
+
+  render json:{}
+end
+
+def process_card
+  paypal_helper = Stores::Paypal.new(@shopping_cart.total,
+                                    @shopping_cart.items,
+                                    return_url:checkout_url,
+                                    cancel_url:carrito_url)
+
+if paypal_helper.process_card(params).create
+@my_payment = MyPayment.create!(paypal_id: paypal_helper.payment.id,
+                                ip:request.remote_ip,
+                                email: params[:email],
+                                shopping_cart_id: cookies[:shopping_cart_id])
+@my_payment.pay!
+redirect_to carrito_path, notice: "el pago se realizo correctamente"
+  else
+  redirect_to carrito_path, notice: paypal_helper.payment.error
   end
 end
 
