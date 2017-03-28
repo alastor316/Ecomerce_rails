@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222232026) do
+ActiveRecord::Schema.define(version: 20170328014215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 20170222232026) do
     t.datetime "updated_at",       null: false
     t.index ["product_id"], name: "index_in_shopping_carts_on_product_id", using: :btree
     t.index ["shopping_cart_id"], name: "index_in_shopping_carts_on_shopping_cart_id", using: :btree
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.integer  "product_id"
+    t.datetime "expiration_date"
+    t.integer  "downloads"
+    t.integer  "downloads_limit"
+    t.string   "custom_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "email"
+    t.index ["product_id"], name: "index_links_on_product_id", using: :btree
   end
 
   create_table "my_emails", force: :cascade do |t|
@@ -96,5 +108,6 @@ ActiveRecord::Schema.define(version: 20170222232026) do
 
   add_foreign_key "attachments", "products"
   add_foreign_key "in_shopping_carts", "products"
+  add_foreign_key "links", "products"
   add_foreign_key "products", "users"
 end

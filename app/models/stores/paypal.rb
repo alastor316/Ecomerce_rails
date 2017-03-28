@@ -1,4 +1,4 @@
-  class Stores::Paypal
+   class Stores::Paypal
     include PayPal::SDK::REST
     attr_accessor  :payment, :total, :shopping_cart, :return_url, :cancel_url,:items
 
@@ -27,8 +27,8 @@
         }]
         self.payment = Payment.new(options)
         self.payment
-
     end
+
     def payment_options
       {
           intent: "sale",
@@ -52,6 +52,11 @@
             cancel_url: @cancel_url
           }
         }
+    end
+
+    def self.get_email(payment_id)
+      payment = Payment.find(payment_id)
+      payment.payer.payer_info.email
     end
 
 

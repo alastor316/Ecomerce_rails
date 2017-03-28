@@ -12,6 +12,7 @@
 class ShoppingCart < ApplicationRecord
   has_many :products, through: :in_shopping_carts
   has_many :in_shopping_carts
+  has_many :my_payment
 
   include AASM
 
@@ -22,11 +23,24 @@ class ShoppingCart < ApplicationRecord
 
     event :pay do
         after do
-          #TODO: Mandar los archivos que el usuario compro
+            self.generate_links()
         end
         transitions from: :created, to: :payed
     end
+  end
 
+  def payment
+    begin
+      my_payment.payed.first
+    rescue Exception  => e
+      return nil
+    end
+  end
+
+  def generate_links
+    self.products.each do |product|
+      Link.create(expiration_date: DateTime.now + 7.days, product: product,email: payment.email)
+    end
   end
 
   def items

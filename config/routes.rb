@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 post "/emails/create", as: :create_email
 post "/pagar", to: "payments#create"
 post "/payments/cards", to: "payments#process_card"
-get "checkout", to: "payments#checkout"
+get "/checkout", to: "payments#checkout"
+get "/ok", to: "welcome#payment_success"
 
 
 get "carrito", to: "shopping_carts#show"
