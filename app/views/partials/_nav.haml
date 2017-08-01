@@ -2,17 +2,22 @@
 	%nav.green
 	%nav.green{:style => "width:99.9%"}
 		%ul.no-list.no-padding.text-center
-			%li.col-md-4.inline-block.tall-padding
+			%li.col-md-4.inline-block.tall-padding.white-text
 				-if user_signed_in?
 					= link_to root_path, class: "white-text right-space" do
 						%i.mdi-action-shop
 						Mi tienda
-					= link_to "", class: "white-text right-space" do
+					= link_to "ordenes_path", class: "white-text right-space" do
 						%i.mdi-action-translate
 						Ordenes
-					= link_to "", class: "white-text right-space" do
+					= link_to "Alrma", class: "white-text right-space" do
 						%i.mdi-action-alarm
 						Descuentos
+					= link_to "Cerrar sesion", destroy_user_session_path, method: :delete,
+				  	class: "white-text right-space"
+
+
+
 			%li.col-md-4.inline-block.text-center.tall-padding
 				=image_tag "tiendus.png", height: "25px"
 			%li.col-md-4.inline-block.tall-padding

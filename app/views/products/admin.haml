@@ -7,7 +7,9 @@
 		.col-md-9.inline-block.col-sm-8.col-xs-12
 			%h1= @product.name
 		.col-md-3.col-sm-4.col-xs-12.inline-block
-			%p.big.no-margin.red-text 10 USD
+			%p.big.no-margin.red-text
+				=@product.sales_total / 100
+				USD
 		%nav.top-space
 			= link_to product_path(id: @product.id, client: true), class: "other-grey text-center col-md-4 inline-block large-padding col-sm-4 col-xs-4" do
 				Ver como cliente

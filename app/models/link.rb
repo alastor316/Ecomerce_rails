@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Inform  ation
 #
 # Table name: links
 #
@@ -16,11 +16,35 @@
 require 'digest/md5'
 class Link < ApplicationRecord
   before_create :set_defaults
+  after_create :send_email
   belongs_to :product
+  has_many :link_attachments
+
+  def is_invalid?
+    (DateTime.now > self.expiration_date || self.downloads >= 5 )
+  end
+
+  def updated_downloads
+    self.update(downloads: self.downloads+1)
+  end
+
+  def create_attachments_links
+    product.attachments.each do |attachment|
+      self.link_attachments.create(attachment: attachment)
+    end
+  end
+
+  def links
+    link_attachments.limit(product.attachments.count)
+  end
 
   private
     def set_defaults
         self.custom_id = Digest::MD5.hexdigest("#{DateTime.now}#{self.id}#{self.product_id}")
         self.downloads ||= 0
+    end
+
+    def send_email
+      LinkMailer.download_link(self).deliver_now
     end
 end
